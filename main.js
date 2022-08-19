@@ -18,7 +18,7 @@ const keys = {
       return keys.symbol[Math.floor(Math.random() * keys.symbol.length)];
     }
   ];
-  
+
   function createPassword() {
     const upper = document.getElementById("upperCase").checked;
     const lower = document.getElementById("lowerCase").checked;
@@ -39,4 +39,15 @@ const keys = {
       }
     }
     passwordBox.innerHTML = password;
+  }
+  function copyPassword() {
+    const textarea = document.createElement("textarea");
+    const password = document.getElementById("passwordBox").innerText;
+    if (!password) { return; }
+    textarea.value = password;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+    alert("Password copied to clipboard");
   }
